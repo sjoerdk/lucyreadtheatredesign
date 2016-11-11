@@ -57,6 +57,22 @@ from django.utils.translation import ugettext_lazy as _
 # field instance. When specifying the field class, the path
 # ``django.models.db.`` can be omitted for regular Django model fields.
 #
+EXTRA_MODEL_FIELDS = (
+    (
+        "mezzanine.galleries.models.Gallery.featured_image",
+        "mezzanine.core.fields.FileField",
+        ("Header image",),
+        {"blank": True,
+         "null": True,
+         "upload_to": "page_header",
+         "format": "Image",
+         "max_length": 255},
+    ),
+)
+
+MIGRATION_MODULES = {
+     "galleries": "lucyreadtheatredesign.galleries_migration",
+}
 # EXTRA_MODEL_FIELDS = (
 #     (
 #         # Dotted path to field.
