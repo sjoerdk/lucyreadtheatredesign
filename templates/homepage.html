@@ -19,6 +19,14 @@
    {% endfor %}
   ]
   O en ook {{skanky}}
+  
+  
+</p>
+<p>
+en ook nog:
+{% for gallery in all_galleries %}
+    {{ gallery.featured_image.url }}
+{% endfor %}
 </p>
 
 <ul>
