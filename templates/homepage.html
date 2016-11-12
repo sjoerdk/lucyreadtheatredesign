@@ -25,7 +25,9 @@
 <p>
 en ook nog:
 {% for gallery in all_galleries %}
-    {{ gallery.featured_image.url }}
+    gallery {{gallery.title}}: {% if gallery.featured_image %}
+    			{{ gallery.featured_image.url }}
+    		 {% endif %}
 {% endfor %}
 </p>
 
