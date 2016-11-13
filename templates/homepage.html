@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load mezzanine_tags keyword_tags %}
 
 {% block meta_title %}{% trans "Home" %}{% endblock %}
 {% block title %}{% trans "Home" %}{% endblock %}
@@ -28,6 +29,19 @@ en ook nog:
     gallery {{gallery.title}}: {% if gallery.featured_image %}
     			{{ gallery.featured_image.url }}
     		 {% endif %}
+{% endfor %}
+
+</p>
+<p>
+nog meer:
+<div class="gallery row">
+
+{% for gallery in all_galleries %}
+<div class="col-xs-6 col-sm-5">
+    <a class="thumbnail" rel="#image-{{ gallery.title }}" title="{{ gallery.title }}" href="{{ gallery.get_absolute_url }}">
+        <img class="img-responsive" src="{{ MEDIA_URL }}{% thumbnail gallery.featured_image 250 180 %}">
+    </a>
+</div>
 {% endfor %}
 </p>
 
