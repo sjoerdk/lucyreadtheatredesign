@@ -10,5 +10,4 @@ def test(request):
 def homepage(request,template=u"homepage.html"):
     
     g = Gallery.objects.all()
-    p = Page.objects.all()
     return TemplateResponse(request, template, {"skanky":"yomama","all_galleries":g})
