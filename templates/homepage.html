@@ -18,7 +18,16 @@
 <div class="col-xs-3 portfolio ">
 <div class="{{ gallery.keywords_string }}">
     <a class="thumbnail porfoliothumb" rel="#image-{{ gallery.title }}" title="{{ gallery.title }}" href="{{ gallery.get_absolute_url }}">
-        <img class="img-responsive" src="{{ MEDIA_URL }}{% thumbnail gallery.featured_image 500 360 %}">
+        {% if gallery.featured_image %}
+        	<img class="img-responsive" src="{{ MEDIA_URL }}{% thumbnail gallery.featured_image 500 360 %}">
+        {% else %}
+        	
+            <div class="projectnotfounddiv">
+            <img class="img-responsive" src="/static/images/empty_project_greyblue.jpg">
+            <span class="projectnotfoundtext">{{gallery.title}}</span>
+            </div>
+        	
+        {% endif %}
     </a>
 </div>
 </div>

@@ -27,8 +27,9 @@ body {
 .maincontent{
 	background-color:#fffdf7;
 }
-.left{
-	
+
+.img-responsive.notfound{
+	height:72%;
 }
 
 @media (min-width: 768px) {
@@ -80,7 +81,14 @@ a:focus {
 	background-image:none;
 	background-color:rgba(71, 103, 123, 0.7);
 }
-
+.projectnotfoundtext{
+	position:absolute;	
+	top:10%;
+	margin-left:10%;
+	margin-right:10%;
+	font-size:1.5vw;
+	
+}
 footer .contactlink{
 	float:right;
 	margin-right:10px;
