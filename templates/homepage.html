@@ -10,12 +10,14 @@
 {% endblock %}
 
 {% block main %}
-<p><div class="selectionbutton selected" filterfor="all" >All</div>
-<div class="selectionbutton" filterfor="operah" >Operah</div>
-<div class="selectionbutton" filterfor="theatre" >Theatre</div>
+<div class="selectionbuttons row">
+<div class="col-xs-2 selectionbutton selected" filterfor="all" >All</div>
+<div class="col-xs-2 selectionbutton" filterfor="theatre" >Theatre</div>
+<div class="col-xs-2 selectionbutton" filterfor="operah" >Operah / Musical</div>
+<div class="col-xs-2 selectionbutton" filterfor="film" >Film</div>
+<div class="col-xs-2 selectionbutton" filterfor="education" >Education</div>
+</div>
 
-</p>
-<p>
 <div class="gallery row">
 
 {% for gallery in all_galleries %}
@@ -86,7 +88,10 @@ function showOnly(filterclass){
 }
 
 function clearUp(panels){
-	panels.animate({opacity:"1"})
+	//after animating opacity, remove element style to re-activate
+	//css defined style, with hover
+
+	panels.animate({opacity:"0.9"},function(){panels.css("opacity","");})
 	panels.removeClass("grey")
 }
 

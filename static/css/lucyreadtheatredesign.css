@@ -6,6 +6,15 @@ body {
 	/*font-family: 'Oswald', sans-serif;*/
 	font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	background-color:#cbcbd2;
+	overflow-y:scroll;
+}
+
+.pagetop{
+	min-height:50px;	
+	margin-left:auto;
+	margin-right:auto;
+	background-color:#fffdf7;
+	margin-top: -50px;
 }
 
 .navbar > .container .navbar-brand{
@@ -31,19 +40,40 @@ body {
 .img-responsive.notfound{
 	height:72%;
 }
+.selectionbuttons{
+
+}
 
 div .selectionbutton{
-	cursor: pointer; cursor: hand; 
+	cursor: pointer; cursor: hand;
+	font-size:16px;
+	padding-bottom: 8px;
+	padding-top:8px;
+	text-align:center;
+	color:hsl(42, 3%, 65%);
+	overflow:hidden;
+	height: 35px;
+}
+div .selectionbutton:hover{
+	color:hsl(42, 3%, 30%);
+	background-color:hsl(240, 3%, 95%);
 }
 
 div .selectionbutton.selected{
-	background-color:#cbcbd2;
+	color:hsl(42, 3%, 10%);
+	background-color:rgba(231,231,231,1.0);
 }
 .greyoutpanel{
-	opacity: 1;
-    filter: alpha(opacity=1); /* msie */
+	opacity: 0.9;
+    filter: alpha(opacity=0.9); /* msie */
 	background-color: #cbcbd2;
 }
+
+.greyoutpanel:hover{
+	opacity: 1;
+    filter: alpha(opacity=1.0); /* msie */
+}
+
 
 @media (min-width: 768px) {
   footer {
@@ -88,6 +118,7 @@ a:focus {
 
 .navbar{
 	border:0px;
+	margin-bottom:-50px;
 }
 .navbar-default{
 	box-shadow:none;
