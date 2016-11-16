@@ -32,6 +32,19 @@ body {
 	height:72%;
 }
 
+div .selectionbutton{
+	cursor: pointer; cursor: hand; 
+}
+
+div .selectionbutton.selected{
+	background-color:#cbcbd2;
+}
+.greyoutpanel{
+	opacity: 1;
+    filter: alpha(opacity=1); /* msie */
+	background-color: #cbcbd2;
+}
+
 @media (min-width: 768px) {
   footer {
     width: 750px;

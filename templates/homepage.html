@@ -10,21 +10,25 @@
 {% endblock %}
 
 {% block main %}
+<p><div class="selectionbutton selected" filterfor="all" >All</div>
+<div class="selectionbutton" filterfor="operah" >Operah</div>
+<div class="selectionbutton" filterfor="theatre" >Theatre</div>
 
+</p>
 <p>
 <div class="gallery row">
 
 {% for gallery in all_galleries %}
 <div class="col-xs-3 portfolio ">
-<div class="{{ gallery.keywords_string }}">
+<div class="{{ gallery.keywords_string }} greyoutpanel">
     <a class="thumbnail porfoliothumb" rel="#image-{{ gallery.title }}" title="{{ gallery.title }}" href="{{ gallery.get_absolute_url }}">
         {% if gallery.featured_image %}
         	<img class="img-responsive" src="{{ MEDIA_URL }}{% thumbnail gallery.featured_image 500 360 %}">
         {% else %}
         	
             <div class="projectnotfounddiv">
-            <img class="img-responsive" src="/static/images/empty_project_greyblue.jpg">
-            <span class="projectnotfoundtext">{{gallery.title}}</span>
+            	<img class="img-responsive" src="/static/images/empty_project_greyblue.jpg">
+            	<span class="projectnotfoundtext">{{gallery.title}}</span>
             </div>
         	
         {% endif %}
@@ -32,5 +36,91 @@
 </div>
 </div>
 {% endfor %}
+
+<script>
+
+function init(){
+	$(".selectionbutton").each(function(i,d){        
+        hookFilter(this);
+    });     
+};
+
+function hookFilter(selection){
+    //hook up the given jquery selection with a function to hide and show
+    //relevant panels
+    log("hooking button for "+selection.getAttribute("filterfor"));
+    log(selection);
+    $(selection).click(function() {
+    	selectionButtonClicked($(selection));
+    	showOnly(selection.getAttribute("filterfor"));
+    });
+    
+};
+
+function selectionButtonClicked(button){
+	//a selection filter button was clicked, mark that one, unmark others
+	$(".selectionbutton").removeClass("selected");
+	button.addClass("selected");
+	
+}
+
+function showOnly(filterclass){
+	//make completely clear only greyoutpanels with filterclass
+	//given that certain panels are already grayed out and panels
+	//can belong to multiple classes, two groups of panels need
+	//to change: first, the clear images that are now no longer
+	//selected to be greyed out. Second, the greyed out panels
+	//that are now in the selection show be cleared up.
+	//the rest of the panels can stay as they are
+	if(filterclass=="all"){
+		log("showing all");
+		clearUp($('.greyoutpanel'));
+	}else{
+		log("only showing "+filterclass);
+		//grey out current clear panels that are not in selection
+		greyOut($('.greyoutpanel:not(.grey):not(.'+filterclass+')'))
+		
+		//clear up out current grey panels that are in selection
+		clearUp($('.greyoutpanel.grey.'+filterclass));
+	}
+}
+
+function clearUp(panels){
+	panels.animate({opacity:"1"})
+	panels.removeClass("grey")
+}
+
+function greyOut(panels){
+	//Grey out the jquery selection, these should be .greyoutpanel divs
+	
+	panels.animate({opacity:"0.4"});
+	panels.addClass("grey")
+}
+
+function removeDuplicates(collection1,collection2){
+	if(collection2 == undefined){log("WARNING: input Collection2 was not given");};
+	        
+	var filtered = $();
+	//remove any element from collection1 which is also in collection2
+	collection1.each(function(i,d){                        
+	    if(collection2.index(d) == -1){                
+	        filtered = filtered.add(d);
+	    };
+	    
+	});                    
+	return filtered;        
+};
+    
+function log(msg){
+    var logging = true;
+    
+        if(logging){
+            console.log("* "+msg)
+        }
+};
+
+init();
+
+</script>
 
 {% endblock %}
