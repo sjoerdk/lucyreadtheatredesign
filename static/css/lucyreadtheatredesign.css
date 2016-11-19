@@ -262,6 +262,11 @@ footer .contactlink{
 .gallery{
 	/*background-color:white*/
 }
+
+.gallery-content{
+	margin-right:3px;
+}
+
 .container {
   padding-left:0px;
   padding-right:0px;

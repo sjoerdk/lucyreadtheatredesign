@@ -11,9 +11,11 @@
  
  
 <div class="col-md-3 left">
-   {% editable page.gallery.content %}
-{{ page.gallery.content|richtext_filters|safe }}
-{% endeditable %}
+	<div class="gallery-content">
+	   {% editable page.gallery.content %}
+		{{ page.gallery.content|richtext_filters|safe }}
+		{% endeditable %}
+	</div>
 </div>
 
 <div class="gallery row col-md-9">
