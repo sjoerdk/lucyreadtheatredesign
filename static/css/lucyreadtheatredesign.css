@@ -5,14 +5,17 @@
 body {
 	/*font-family: 'Oswald', sans-serif;*/
 	font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: 200;
 	background-color:hsl(203, 14%, 14%);
 	overflow-y:scroll;
 	padding-top:0px;
+	color:hsl(45, 100%, 97%);
 }
 
 .navbar{
 	border:0px;
-	margin-top:30px;
+	margin-bottom: 49px;
+    margin-top: 34px;
 }
 .navbar-default{
 	box-shadow:none;
@@ -21,22 +24,66 @@ body {
 }
 
 .form-group > input[type="text"]{
-	background-color: #fffdf7;
-}
-
-.navbar > .container .navbar-brand{
-	text-shadow:none;
-	color:#fffdf7;
-	font-size:52px;
+	background-color: hsl(203, 14%, 14%);
+    border-color: -moz-use-text-color -moz-use-text-color hsl(45, 3%, 36%);
+    border-image: none;
+    border-radius: 0;
+    border-style: none none solid;
+    border-width: medium medium 0px;
+    box-shadow:none;
+    color:hsl(45,100%,97%);
+    margin: 0;
+    padding: 0 10px;
+    width: 125px;
 }
 
 .navbar-default .navbar-nav > li > a{
 	text-shadow:none;
-	color:#fffdf7;
+	color:#777;
+}
+
+.navbar-default .navbar-nav > li > a:hover{
+	text-decoration:underline;
+	color:#bbb;
+}
+
+.navbar-default .navbar-nav > .active > a:hover{
+	background-color:transparent;
+	color:hsl(45,100%,97%);
+}
+
+.navbar-default .navbar-nav > .active > a{
+	background-color:transparent;
+	background-image:none;
+	box-shadow:none;
+	color:hsl(45,100%,97%);
+	text-decoration:underline;
+}
+
+.navbar .btn-default{
+	background-color: hsl(203, 14%, 14%);
+    border-color: -moz-use-text-color -moz-use-text-color hsl(45, 3%, 36%);
+    border-image: none;
+    border-radius: 0;
+    border-style: none none solid;
+    border-width: medium medium 1px;
+    background-image:none;
+    text-shadow:none;
+    box-shadow:none;
+    display:none;
+    margin: 0;
+    padding: 0 10px;
+    width: 30px;
+}
+
+.navbar > .container .navbar-brand{
+	text-shadow:none;
+	color:hsl(45,100%,97%);
+	font-size:52px;
 }
 
 .navbar-default .navbar-text{
-	color:#fffdf7 !important;
+	color:hsl(45,100%,97%) !important;
 }
 
 .navbar-form .form-control{
@@ -45,16 +92,46 @@ body {
 
 .navbar-form.navbar-right {
     margin-right: 0px;
+    
 }
 
 .navbar-nav {
-    /*float: right;*/
+    float: right;
+}
+
+@media (max-width: 768px) {
+	.navbar-nav {
+	    float: left;
+	    margin-left: 0;
+    	margin-right: 0;
+    	width: 100%;
+	}
+	
+	.navbar-default .navbar-nav > li a:hover{
+		background-color: hsl(203, 14%, 23%);
+	}
+	.navbar-default .navbar-nav > .active > a:hover{
+		background-color: hsl(203, 14%, 23%);
+	}
+	.navbar-form.navbar-right {
+        margin-bottom: -24px;
+    	padding-left: 22px;
+	}	
+    .form-group > input[type="text"]{
+    	width:100%;	
+    
+	}
+			
+}
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+	border:none;
+	border-color:transparent;
+	box-shadow:none;
 }
 
 
-
 .maincontent{
-	/*background-color:#fffdf7;*/
+	/*background-color:hsl(45,100%,97%);*/
 }
 
 .img-responsive.notfound{
@@ -86,6 +163,9 @@ div .selectionbutton:hover{
 div .selectionbutton.selected{
 	color:hsl(42, 3%, 70%);
 	text-decoration:underline;
+}
+.hidden-search{
+
 }
 
 .greyoutpanel{
@@ -120,7 +200,7 @@ footer{
 	border-top:0px;
 	margin:0 auto;
 	padding-bottom:10px;
-	border-top: 1px #eae8e3 solid;
+	border-top: 0px #eae8e3 solid;
 	background-color:transparent;
 	color:#cbcbd2;
 }
