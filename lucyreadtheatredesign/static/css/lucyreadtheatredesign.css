@@ -9,6 +9,7 @@ body {
 	background-color:hsl(203, 14%, 14%);
 	padding-top:0px;
 	color:hsl(45, 100%, 97%);
+	font-size:16px;
 }
 
 .navbar{
@@ -78,11 +79,12 @@ body {
 .navbar > .container .navbar-brand{
 	text-shadow:none;
 	color:hsl(45,100%,97%);
-	font-size:52px;
+	font-size:60px;
 }
 
 .navbar-default .navbar-text{
 	color:hsl(45,100%,97%) !important;
+    font-size: 16px;
 }
 
 .navbar-form .form-control{
@@ -160,7 +162,7 @@ div .selectionbutton{
 	margin-bottom: 5px;
 	margin-left:10px;
 	text-align:left;
-	color:hsl(42, 3%, 43%);
+	color:hsl(42, 3%, 56%);
 	overflow:hidden;
 	height: 25px;
 	float:left;
@@ -172,7 +174,7 @@ div .selectionbutton:hover{
 }
 
 div .selectionbutton.selected{
-	color:hsl(42, 3%, 70%);
+	color:hsl(42, 3%, 90%);
 	text-decoration:underline;
 }
 .hidden-search{
@@ -188,6 +190,30 @@ div .selectionbutton.selected{
 .greyoutpanel:hover{
 	opacity: 1;
     filter: alpha(opacity=1.0); /* msie */
+}
+
+.project-title-bar{
+    bottom: 5px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    cursor: pointer; cursor: hand;
+    font-size:18px;
+    
+}
+.project-title-bar .text{
+	background-image: url("/static/images/40_procent_translucent.png");
+  	background-repeat: repeat; 
+	padding-left: 1ex;
+    padding-right: 1ex;
+	display:inline-block;
+
+}
+.project-title-bar .text a {
+    display: block;
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
 }
 
 @media (min-width: 768px) {

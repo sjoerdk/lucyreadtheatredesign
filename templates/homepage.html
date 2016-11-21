@@ -30,12 +30,17 @@
         {% else %}
         	
             <div class="projectnotfounddiv">
-            	<img class="img-responsive" src="/static/images/empty_project_greyblue.jpg">
+            	
+            		<img class="img-responsive" src="/static/images/empty_project_greyblue.jpg">
+            		
             	<span class="projectnotfoundtext">{{gallery.title}}</span>
             </div>
         	
         {% endif %}
     </a>
+    <div class="project-title-bar" onclick="location.href='{{ gallery.get_absolute_url }}';">
+    	<div class="text"><span>{{ gallery.title }}</span></div>
+   	</div>
 </div>
 </div>
 {% endfor %}
@@ -94,13 +99,15 @@ function clearUp(panels){
 
 	panels.animate({opacity:"1"},function(){panels.css("opacity","");})
 	panels.removeClass("grey")
+	panels.children(".project-title-bar").fadeIn()
 }
 
 function greyOut(panels){
 	//Grey out the jquery selection, these should be .greyoutpanel divs
 	
-	panels.animate({opacity:"0.4"});
+	panels.animate({opacity:"0.3"});
 	panels.addClass("grey")
+	panels.children(".project-title-bar").fadeOut()
 }
 
 function removeDuplicates(collection1,collection2){
