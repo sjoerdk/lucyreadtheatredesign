@@ -35,6 +35,7 @@ body {
     margin: 0;
     padding: 0 10px;
     width: 125px;
+    font-size: 16px;
 }
 
 .navbar-default .navbar-nav > li > a{
