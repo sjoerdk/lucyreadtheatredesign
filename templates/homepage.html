@@ -10,15 +10,21 @@
 {% endblock %}
 
 {% block main %}
-<div class="selectionbuttons row">
-	<div class="selectionbutton selected" filterfor="all" >All</div>
-	<div class="selectionbutton" filterfor="theatre" >Theatre</div>
-	<div class="selectionbutton" filterfor="operah" >Operah / Musical</div>
-	<div class="selectionbutton" filterfor="film" >Film</div>
-	<div class="selectionbutton" filterfor="events" >Events</div>
-	<div class="selectionbutton" filterfor="teaching" >Teaching / Workshops</div>
+<div class="selectioncontainer">
+	<button class="selectionbuttons-toggle" type="button" data-toggle="collapse" data-target=".selectionbuttons">
+		<span class="triangle"></span>
+	</button>
+	<div class="currently-selected">All</div>
+	<div class="selectionbuttons row">
+		<div class="selectionbutton selected" filterfor="all" >All</div>
+		<div class="selectionbutton" filterfor="theatre" >Theatre</div>
+		<div class="selectionbutton" filterfor="operah" >Operah / Musical</div>
+		<div class="selectionbutton" filterfor="film" >Film</div>
+		<div class="selectionbutton" filterfor="events" >Events</div>
+		<div class="selectionbutton" filterfor="teaching" >Teaching / Workshops</div>
+	</div>
+	
 </div>
-
 <div class="gallery row">
 
 {% for gallery in all_galleries %}
@@ -69,6 +75,7 @@ function selectionButtonClicked(button){
 	button.addClass("selected");
 	
 }
+
 
 function showOnly(filterclass){
 	//make completely clear only greyoutpanels with filterclass
@@ -121,7 +128,15 @@ function removeDuplicates(collection1,collection2){
 	});                    
 	return filtered;        
 };
-    
+
+function onResize(){
+	if($(window).width() < 460){
+		$(".selectionbuttons").addClass("collapsed");
+	}else{
+		$(".selectionbuttons.collapsed").removeClass("collapsed");
+	}
+}
+
 function log(msg){
     var logging = true;
     
@@ -130,7 +145,11 @@ function log(msg){
         }
 };
 
+
+
 init();
+
+$(window).resize(function () { onResize(); });
 
 </script>
 
