@@ -41,6 +41,7 @@ body {
 .navbar-default .navbar-nav > li > a{
 	text-shadow:none;
 	color:#777;
+	text-align: center;
 }
 
 .navbar-default .navbar-nav > li > a:hover{
@@ -138,7 +139,7 @@ body {
     .form-group > input[type="text"]{
     	width:100%;
     	max-width:none;
-    
+    	text-align: center;
 	}
 			
 }
@@ -209,8 +210,8 @@ div .selectionbutton.selected{
     float: right;
     height: 16px;
     margin-bottom: 8px;
-    margin-right: 15px;
-    margin-top: 20px;
+    margin-right: 11px;
+    margin-top: 22px;
     padding: 3px 2px;
     position: relative;
     width: 17px;
