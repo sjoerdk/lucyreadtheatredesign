@@ -11,10 +11,9 @@
 
 {% block main %}
 <div class="selectioncontainer">
-	<button class="selectionbuttons-toggle" type="button" data-toggle="collapse" data-target=".selectionbuttons">
+	<div class="selectionbuttons-toggle" type="button">
 		<span class="triangle"></span>
-	</button>
-	<div class="currently-selected">All</div>
+	</div>
 	<div class="selectionbuttons row">
 		<div class="selectionbutton selected" filterfor="all" >All</div>
 		<div class="selectionbutton" filterfor="theatre" >Theatre</div>
@@ -54,14 +53,17 @@
 function init(){
 	$(".selectionbutton").each(function(i,d){        
         hookFilter(this);
-    });     
+    });
+	
+	$(".selectionbuttons-toggle").click(function(){selectionButtonsToggled();});
+	//call this once for when a user does a page reload withour resizing
+	onResize()
 };
 
 function hookFilter(selection){
     //hook up the given jquery selection with a function to hide and show
     //relevant panels
     log("hooking button for "+selection.getAttribute("filterfor"));
-    log(selection);
     $(selection).click(function() {
     	selectionButtonClicked($(selection));
     	showOnly(selection.getAttribute("filterfor"));
@@ -69,13 +71,61 @@ function hookFilter(selection){
     
 };
 
+function selectionButtonsToggled(){
+	
+	//toggle collapsed status
+	if(isCollapsed()){
+		collapse(false);
+
+	}else{
+		collapse(true);
+	}
+}
+
+function collapse(bool){
+	
+	//toggle collapsed status
+	if(bool){
+		$(".selectionbuttons").addClass("collapsed");
+		$(".selectionbuttons-toggle").addClass("collapsed");
+
+	}else{
+		$(".selectionbuttons.collapsed").removeClass("collapsed");
+		$(".selectionbuttons-toggle").removeClass("collapsed");
+		
+	}
+	updateSelectionButtons();
+}
+
+function updateSelectionButtons(){
+
+	if(isCollapsed()){
+		$(".selectionbuttons .selectionbutton:not(.selected)").hide();
+	}else{
+		$(".selectionbuttons .selectionbutton:not(.selected)").show();
+		
+	}	
+}
+
+function isCollapsed(){
+	return $(".selectionbuttons.collapsed").length  != 0;
+}
+
+function isCollapsable(){
+	return $(".selectionbuttons.collapsable").length  != 0;
+}
+
 function selectionButtonClicked(button){
 	//a selection filter button was clicked, mark that one, unmark others
 	$(".selectionbutton").removeClass("selected");
 	button.addClass("selected");
 	
+	//in a collapsable menu, make a click close the menu.
+	if (isCollapsable()){
+		selectionButtonsToggled();
+	}
+	
 }
-
 
 function showOnly(filterclass){
 	//make completely clear only greyoutpanels with filterclass
@@ -130,11 +180,19 @@ function removeDuplicates(collection1,collection2){
 };
 
 function onResize(){
-	if($(window).width() < 460){
-		$(".selectionbuttons").addClass("collapsed");
+	if($(window).width() < 470){
+		//screen is small
+		$(".selectionbuttons").addClass("collapsable");
+		$(".selectionbuttons-toggle").show();
+		collapse(true);
 	}else{
-		$(".selectionbuttons.collapsed").removeClass("collapsed");
+		//screen is big
+		$(".selectionbuttons.collapsable").removeClass("collapsable");
+		collapse(false);
+		$(".selectionbuttons-toggle").hide();
+		
 	}
+	updateSelectionButtons()
 }
 
 function log(msg){
@@ -148,8 +206,8 @@ function log(msg){
 
 
 init();
-
 $(window).resize(function () { onResize(); });
+
 
 </script>
 

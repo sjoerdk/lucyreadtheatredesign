@@ -154,31 +154,41 @@ body {
 
 .selectionbuttons{
 	
-	padding-top:8px;
-	
-	background-color: transparent;
-    background-image: none;
-    border: 1px solid transparent;
-    border-radius: 4px;
+    border-color: #ddd;
     float: right;
     margin-bottom: 8px;
     margin-right: 15px;
     margin-top: 8px;
-    padding: 9px 10px;
-    position: relative;
-    border-color: #ddd;
+    padding: 9px 10px 9px 0px;
+    position: absolute;
+    z-index: 3;
 }
+.selectionbuttons.collapsable{
+	background-image: url("/static/images/90_procent_translucent.png");
+	 padding-left:26px;
+}
+
+.selectionbuttons.collapsed{	
+    background-image: none;
+}
+
+div .selectionbuttons.collapsable .selectionbutton{
+		width:100%;
+}
+
 
 div .selectionbutton{
 	cursor: pointer; cursor: hand;
 	font-size:14px;
 	margin-bottom: 5px;
-	margin-left:10px;
+	margin-left:5px;
+	margin-right:5px;
 	text-align:left;
 	color:hsl(42, 3%, 56%);
 	overflow:hidden;
 	height: 25px;
 	float:left;
+
 }
 
 div .selectionbutton:hover{
@@ -192,18 +202,43 @@ div .selectionbutton.selected{
 }
 
 .selectionbuttons-toggle{
-	background-color: transparent;
+   background-color: transparent;
     background-image: none;
-    border: 1px solid transparent;
+    border: 1px solid #ddd;
     border-radius: 4px;
     float: right;
+    height: 19px;
     margin-bottom: 8px;
     margin-right: 15px;
-    margin-top: 8px;
-    padding: 9px 10px;
+    margin-top: 20px;
+    padding: 3px;
     position: relative;
-    border-color: #ddd;
+    width: 21px;
+    z-index: 4;
 }
+.selectionbuttons-toggle.collapsed{
+	padding: 2px 4px;
+}
+
+.selectionbuttons-toggle .triangle{
+	margin-left:auto;
+	margin-right:auto;
+	border:7px solid transparent;
+	border-top:12px solid #777;
+	position:absolute;	
+}
+
+.selectionbuttons-toggle.collapsed .triangle{
+	
+	border:7px solid transparent;
+	border-left:14px solid #777;
+		
+}
+
+.selectioncontainer{
+	height: 48px;
+}
+
 .selectioncontainer div, .selectioncontainer button{
 	float:left;
 }
@@ -212,10 +247,8 @@ div .selectionbutton.selected{
 	overflow: hidden;
 }
 
-div .selectionbuttons.collapsed .selectionbutton{
-		width:100%;
-	
-}
+
+
 
 .greyoutpanel{
 	opacity: 1;
