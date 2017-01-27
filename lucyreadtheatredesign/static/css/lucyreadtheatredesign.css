@@ -269,6 +269,7 @@ div .selectionbutton.selected{
     width: 100%;
     cursor: pointer; cursor: hand;
     font-size:18px;
+    opacity: 0;
     
 }
 .project-title-bar .text{
