@@ -54,56 +54,18 @@
 <script>
 
 function init(){
-	//hook buttons at top that filter all panels
 	$(".selectionbutton").each(function(i,d){        
-		hookFilter(this);
+        hookFilter(this);
     });
-	
-	//hook panels over each project image
-	$(".greyoutpanel").each(function(i,d){
-		hookPanel($(this));
-	});
 	
 	$(".selectionbuttons-toggle").click(function(){selectionButtonsToggled();});
 	//call this once for when a user does a page reload withour resizing
 	onResize()
 };
 
-function hookPanel(selection){
-	//Add functions to given panel that is over each project image
-	log("hooking panel for '"+selection.find(".thumbnail").attr("Title")+"'");
-    selection.hover(
-    	function () {
-    		//on hover in
-	    	if($(this).hasClass("grey")){
-	    		//hovering over greyed out panel. Do nothing
-	    	}else{
-	    		//hovering over active panel, temp dim all other active panels
-				greyOutTemp($('.greyoutpanel:not(.grey)').not($(this)));
-	    	};
-	    	
-	    	//$(".greyoutpanel:not(.grey)")
-	    },
-	    function(){
-	    	//on hover out
-	    	if($(this).hasClass("grey")){
-	    		//hovering out of greyed out panel. Do nothing
-	    	}else{
-	    		//hovering out of active panel, remove temp dim on all other active panels
-				clearUpTemp($('.greyoutpanel:not(.grey)').not($(this)));
-	    	};
-	    	
-	    }
-    
-    
-    );
-	
-};
-
 function hookFilter(selection){
-	//hook up the given jquery selection with a function to hide and show
+    //hook up the given jquery selection with a function to hide and show
     //relevant panels
-    
     log("hooking button for "+selection.getAttribute("filterfor"));
     $(selection).click(function() {
     	selectionButtonClicked($(selection));
@@ -204,25 +166,6 @@ function greyOut(panels){
 	panels.animate({opacity:"0.3"});
 	panels.addClass("grey")
 	panels.children(".project-title-bar").fadeOut()
-}
-
-function clearUpTemp(panels){
-	//temp greyout for mouse hover effects
-	//after animating opacity, remove element style to re-activate
-	//css defined style, with hover
-	
-	panels.removeClass("grey_temp");
-	panels.stop(true).animate({opacity:"1"},200,function(){panels.css("opacity","");});
-	
-}
-
-function greyOutTemp(panels){
-	//temp greyout for hover effects
-	//Grey out the jquery selection, these should be .greyoutpanel divs
-	
-	panels.addClass("grey_temp")
-	panels.stop(true).animate({opacity:"0.6"});
-	
 }
 
 function removeDuplicates(collection1,collection2){
