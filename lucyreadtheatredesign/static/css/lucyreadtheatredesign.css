@@ -89,6 +89,11 @@ body {
     font-size: 16px;
 }
 
+.navbar-text{
+    float:none;
+    padding-top: 55px;
+}
+
 .navbar-form .form-control{
 	display:none;
 }
