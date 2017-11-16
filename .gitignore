@@ -10,4 +10,4 @@ RUN
 RUN_VE
 *.pid
 /static
-
+.idea
